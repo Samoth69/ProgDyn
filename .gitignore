@@ -17,6 +17,7 @@
 
 # Ignore les fichiers EXCEL
 *.csv
+*.xlsx
 
 # exclus le dossier de documentation
 doxygen
