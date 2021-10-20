@@ -16,8 +16,7 @@ int find_by_dichotomy(int array[], size_t size, int value)
     // on divise les tableaux qui ont plus de 32 éléments
     while (_size > 32)
     {
-        //divise 2
-        _size = _size >> 1;
+        _size = _size / 2;
         if (array[start_val + _size] < value)
         {
             start_val += _size;
