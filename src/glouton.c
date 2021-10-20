@@ -1,5 +1,14 @@
 #include "glouton.h"
 
+/**
+ * @brief Knapsack problem solver
+ * 
+ * @param g objects to put in bag
+ * @param size size of g
+ * @param W max Weight allowed inside bag
+ * @param out objects that has been put inside bag
+ * @param size_out size of out
+ */
 void GloutonFillByQP(glouton *g, size_t size, int W, glouton *out, int *size_out)
 {
     int wsum = 0;
@@ -16,6 +25,12 @@ void GloutonFillByQP(glouton *g, size_t size, int W, glouton *out, int *size_out
     *size_out = counter;
 }
 
+/**
+ * @brief 
+ * Sort glouton array with the highest c/w ratio at the top
+ * @param data glouton array
+ * @param size size of glouton array
+ */
 void GloutonTriParQP(glouton *data, int size)
 {
     glouton temp;
