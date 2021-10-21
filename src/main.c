@@ -5,6 +5,25 @@
 
 #include "dichotomy.h"
 #include "glouton.h"
+#include "dynamique.h"
+
+void test_prog_dynamique()
+{
+	const int size = 200;
+	int **tb;
+
+	// memory allocation
+	// see https://stackoverflow.com/questions/3911400/how-to-pass-2d-array-matrix-in-a-function-in-c
+	tb = malloc(size * sizeof *tb);
+	for (int i = 0; i < size; i++)
+	{
+		tb[i] = malloc(size * sizeof *tb[i]);
+	}
+
+	dyna_gen_tableau(tb, size, 2000);
+	dyna_search_pgcb(tb, size);
+	dyna_print_tableau(tb, size);
+}
 
 void test_dichotomy()
 {
@@ -28,6 +47,7 @@ void test_glouton()
 	glouton *out = (glouton *)malloc(sizeof(glouton) * 3);
 	int sout = 0;
 	GloutonFillByQP(&g, 3, 10, out, &sout);
+	CU_ASSERT_EQUAL(sout, 1);
 	CU_ASSERT_EQUAL(out[0].c, 7);
 	CU_ASSERT_EQUAL(out[0].w, 6);
 }
@@ -38,6 +58,7 @@ int main()
 	CU_pSuite *suite = CU_add_suite("test suite", NULL, NULL);
 	CU_add_test(suite, "test_dichotomy", test_dichotomy);
 	CU_add_test(suite, "test_glouton", test_glouton);
+	CU_add_test(suite, "test_prog_dynamique", test_prog_dynamique);
 	CU_basic_run_tests();
 
 	return (EXIT_SUCCESS);

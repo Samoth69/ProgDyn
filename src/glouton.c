@@ -17,6 +17,10 @@ void GloutonFillByQP(glouton *g, size_t size, int W, glouton *out, int *size_out
     GloutonTriParQP(g, size);
     for (int i = 0; i < size && wsum <= W; i++)
     {
+        //if the next item will overflow the bag
+        if (g[i].w + wsum > W)
+            break;
+            
         out[counter] = g[i];
         wsum += out[counter].w;
         counter++;
