@@ -6,10 +6,11 @@
 #include "dichotomy.h"
 #include "glouton.h"
 #include "dynamique.h"
+#include "bitmap.h"
 
 void test_prog_dynamique()
 {
-	const int size = 200;
+	const int size = 250;
 	int **tb;
 
 	// memory allocation
@@ -20,9 +21,10 @@ void test_prog_dynamique()
 		tb[i] = malloc(size * sizeof *tb[i]);
 	}
 
-	dyna_gen_tableau(tb, size, 2000);
+	dyna_gen_tableau(tb, size, 1000);
 	dyna_search_pgcb(tb, size);
-	dyna_print_tableau(tb, size);
+	//dyna_print_tableau(tb, size);
+	bitmap_draw(tb, size, 4, "output.bmp");
 }
 
 void test_dichotomy()
