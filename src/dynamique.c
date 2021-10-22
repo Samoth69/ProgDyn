@@ -64,6 +64,38 @@ void dyna_print_tableau(int **tb, int size)
     }
 }
 
+void initElem(pointList *pt)
+{
+    pt->size = 0;
+}
+
+void addElem(pointList *pt, int x, int y)
+{
+    pt->x[pt->size] = x;
+    pt->y[pt->size] = y;
+    pt->size++;
+}
+
+bool coordInside(pointList *pt, int startX, int endX, int startY, int endY)
+{
+    bool ret = false;
+    for (int i = 0; i < pt->size; i++)
+    {
+        if (startX >= pt->x[i] && pt->x[i] <= endX &&
+            startY >= pt->y[i] && pt->y[i] <= endY)
+        {
+            ret = true;
+            break;
+        }
+    }
+    return ret;
+}
+
+void clearElem(pointList *pt)
+{
+    pt->size = 0;
+}
+
 /**
  * @brief Search the biggest square with no '*' inside.
  * This square will be marked with '#' in the array
@@ -74,8 +106,12 @@ void dyna_print_tableau(int **tb, int size)
 void dyna_search_pgcb(int **tb, int size)
 {
     int bestSize = 0;
-    int bestX = 0;
-    int bestY = 0;
+    // int bestX = 0;
+    // int bestY = 0;
+
+    pointList *pts = (pointList *)malloc(sizeof(pointList));
+    initElem(pts);
+
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -85,26 +121,36 @@ void dyna_search_pgcb(int **tb, int size)
                 int res = dyna_search_square(tb, size, i, j);
                 if (res > bestSize)
                 {
+                    clearElem(pts);
                     bestSize = res;
-                    bestX = i;
-                    bestY = j;
+                    //bestX = i;
+                    //bestY = j;
+                    addElem(pts, i, j);
+                }
+                else if (res == bestSize)
+                {
+                    if (!coordInside(pts, i, i + bestSize, j, j + bestSize))
+                        addElem(pts, i, j);
                 }
             }
         }
     }
 
-    for (int i = bestX; i < bestX + bestSize; i++)
+    for (int ptt = 0; ptt < pts->size; ptt++)
     {
-        for (int j = bestY; j < bestY + bestSize; j++)
+        for (int i = pts->x[ptt]; i < pts->x[ptt] + bestSize; i++)
         {
-            if (tb[i][j] == 0)
-                tb[i][j] = 2;
+            for (int j = pts->y[ptt]; j < pts->y[ptt] + bestSize; j++)
+            {
+                if (tb[i][j] == 0)
+                    tb[i][j] = 2;
+            }
         }
     }
 
     printf("bestSize: %d\n", bestSize);
-    printf("bestX: %d\n", bestX);
-    printf("bestY: %d\n", bestY);
+    // printf("bestX: %d\n", bestX);
+    // printf("bestY: %d\n", bestY);
 }
 
 /**

@@ -94,6 +94,14 @@ void bitmap_init()
     INFO_HEADER_SIZE = 40;
 }
 
+/**
+ * @brief génère une image bmp à partir du tableau dynamique
+ * 
+ * @param tb tableau dynamique
+ * @param size taille du tableau dynamique
+ * @param k facteur pour la taille de l'image (>= 1)
+ * @param fileName nom du fichier de sortie
+ */
 void bitmap_draw(int **tb, int size, int k, char *fileName)
 {
     bitmap_init();
