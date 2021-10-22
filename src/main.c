@@ -21,7 +21,7 @@ void test_prog_dynamique()
 		tb[i] = malloc(size * sizeof *tb[i]);
 	}
 
-	dyna_gen_tableau(tb, size, 6000);
+	dyna_gen_tableau(tb, size, 25000);
 	dyna_search_pgcb(tb, size);
 	//dyna_print_tableau(tb, size);
 	bitmap_draw(tb, size, 4, "output.bmp");

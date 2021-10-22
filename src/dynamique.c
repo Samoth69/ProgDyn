@@ -64,11 +64,23 @@ void dyna_print_tableau(int **tb, int size)
     }
 }
 
+/**
+ * @brief initialise the pointList
+ * 
+ * @param pt 
+ */
 void initElem(pointList *pt)
 {
     pt->size = 0;
 }
 
+/**
+ * @brief add element to pointList
+ * 
+ * @param pt point array
+ * @param x x coord to add
+ * @param y y coord to add
+ */
 void addElem(pointList *pt, int x, int y)
 {
     pt->x[pt->size] = x;
@@ -76,6 +88,17 @@ void addElem(pointList *pt, int x, int y)
     pt->size++;
 }
 
+/**
+ * @brief check if one point inside the pointArray is within the specified coord
+ * 
+ * @param pt point array
+ * @param startX start x (inclusive)
+ * @param endX end x (inclusive)
+ * @param startY start y (inclusive)
+ * @param endY end y (inclusive)
+ * @return true if the coord is within the specified parameters
+ * @return false if outside specified coords
+ */
 bool coordInside(pointList *pt, int startX, int endX, int startY, int endY)
 {
     bool ret = false;
@@ -91,6 +114,11 @@ bool coordInside(pointList *pt, int startX, int endX, int startY, int endY)
     return ret;
 }
 
+/**
+ * @brief clear the point list
+ * 
+ * @param pt pointlist
+ */
 void clearElem(pointList *pt)
 {
     pt->size = 0;
