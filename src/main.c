@@ -10,7 +10,15 @@
 
 void test_prog_dynamique()
 {
+	//taille du tableau
 	const int size = 250;
+
+	//nombre de point noir
+	const int numberOfBlackPoint = 6000;
+
+	//facteur scaleup pour l'image
+	const int k = 4;
+
 	int **tb;
 
 	// memory allocation
@@ -21,10 +29,10 @@ void test_prog_dynamique()
 		tb[i] = malloc(size * sizeof *tb[i]);
 	}
 
-	dyna_gen_tableau(tb, size, 25000);
+	dyna_gen_tableau(tb, size, numberOfBlackPoint);
 	dyna_search_pgcb(tb, size);
 	//dyna_print_tableau(tb, size);
-	bitmap_draw(tb, size, 4, "output.bmp");
+	bitmap_draw(tb, size, k, "output.bmp");
 }
 
 void test_dichotomy()

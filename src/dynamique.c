@@ -176,9 +176,10 @@ void dyna_search_pgcb(int **tb, int size)
         }
     }
 
-    printf("bestSize: %d\n", bestSize);
+    //printf("bestSize: %d\n", bestSize);
     // printf("bestX: %d\n", bestX);
     // printf("bestY: %d\n", bestY);
+    printf("size: %d\n", pts->size);
 }
 
 /**
