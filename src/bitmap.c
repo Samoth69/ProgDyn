@@ -136,7 +136,7 @@ void bitmap_draw(int **tb, int size, int k, char *fileName)
             counterJ++;
         }
         tbj = 0;
-        counterJ = 0;
+        //counterJ = 0;
         if (counterI >= k)
         {
             counterI = 0;
