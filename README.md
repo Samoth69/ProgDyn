@@ -1,6 +1,9 @@
 # Progdyn
 
-Auteur: Thomas Violent  
+Author: Thomas Violent  
+
+This is a solver for the BSQ problem:  
+You have a map (or 2D array) with obstacles (black dot). you want to find the biggest square possible with no obstacle on this map.
 
 ## Image
 
