@@ -1,5 +1,7 @@
 # Progdyn
 
+[![codebeat badge](https://codebeat.co/badges/7b5bfc76-68fc-438c-95e1-1f43e703fea4)](https://codebeat.co/projects/github-com-samoth69-progdyn-master)
+
 Author: Thomas Violent  
 
 This is a solver for the BSQ problem:  
